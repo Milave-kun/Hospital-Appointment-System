@@ -1,0 +1,41 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.signin-btn,
+.register-btn {
+    background-color: #001f3f !important;
+    color: white !important;
+}
+
+body {
+    background-image: url("/alt-5ae892611bf1a-5168-147283201.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: "Poppins", sans-serif;
+}
+
+section {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 80px;
+}
+
+h2 {
+    font-weight: bolder;
+    text-align: center;
+}
+
+.main-p {
+    text-align: center;
+}
+
+#makeAppointment {
+    background-color: #001f3f;
+    color: white;
+}
+
+
