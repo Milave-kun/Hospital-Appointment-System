@@ -108,7 +108,10 @@
     <Content Include="Homepage.html" />
     <Content Include="hospital-appointment-system %281%29.png" />
     <Content Include="Login.aspx" />
+    <Content Include="Patient\All Doctors.aspx" />
+    <Content Include="Patient\Appointments Patient.aspx" />
     <Content Include="Patient\Patient Dashboard.aspx" />
+    <Content Include="Patient\Sessions Patient.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -206,11 +209,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Patient\All Doctors.aspx.designer.vb">
+      <DependentUpon>All Doctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\All Doctors.aspx.vb">
+      <DependentUpon>All Doctors.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Patient\Appointments Patient.aspx.designer.vb">
+      <DependentUpon>Appointments Patient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\Appointments Patient.aspx.vb">
+      <DependentUpon>Appointments Patient.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Patient\Patient Dashboard.aspx.designer.vb">
       <DependentUpon>Patient Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Patient\Patient Dashboard.aspx.vb">
       <DependentUpon>Patient Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Patient\Sessions Patient.aspx.designer.vb">
+      <DependentUpon>Sessions Patient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\Sessions Patient.aspx.vb">
+      <DependentUpon>Sessions Patient.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Register.aspx.designer.vb">

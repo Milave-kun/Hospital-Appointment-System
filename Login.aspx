@@ -93,7 +93,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
 
-                <button class="btn w-100 mt-3">LOGIN</button>
+                <asp:Button class="btn w-100 mt-3" ID="btnLogin" Text="LOGIN" runat="server" OnClick="btnLogin_Click" />
                 <p class="mt-3">Don't have an account? <a style="color: #001F3F;" href="/Register.aspx">Sign Up</a></p>
             </form>
         </div>

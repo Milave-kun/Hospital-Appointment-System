@@ -5,4 +5,11 @@
 
     End Sub
 
+    Protected Sub btnLogin_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Login()
+
+    End Sub
 End Class
