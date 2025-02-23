@@ -56,9 +56,9 @@
         <b class="btn w-100">LOG OUT</b>
         <hr>
         <a class="sidebarr" href="Patient Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-        <a class="sidebarr" href=""><i class="bi bi-briefcase-fill"></i>All Doctors</a>
-        <a class="sidebarr" href=""><i class="bi bi-clock-fill"></i>Scheduled Sessions</a>
-        <a class="sidebarr" href=""><i class="bi bi-bookmark-fill"></i>My Appointments</a>
+        <a class="sidebarr" href="All Doctors.aspx"><i class="bi bi-briefcase-fill"></i>All Doctors</a>
+        <a class="sidebarr" href="Sessions Patient.aspx"><i class="bi bi-clock-fill"></i>Scheduled Sessions</a>
+        <a class="sidebarr" href="Appointments Patient.aspx"><i class="bi bi-bookmark-fill"></i>My Appointments</a>
     </div>
 
     <div class="main-content">
@@ -118,14 +118,16 @@
                     <table class="table table-bordered">
                         <thead class="table-dark">
                             <tr>
+                                <th>Appoint. Number</th>
                                 <th>Session Title</th>
                                 <th>Doctor</th>
-                                <th>Date & Time</th>
+                                <th>Date</th>
+                                <th>Time</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="3" class="text-center">No upcoming appointments</td>
+                                <td colspan="5" class="text-center">No upcoming appointments</td>
                             </tr>
                         </tbody>
                     </table>
