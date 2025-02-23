@@ -32,22 +32,22 @@ Partial Public Class Register
     Protected WithEvents FullnameTxt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''usernameTxt control.
+    '''UsernameTxt control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents usernameTxt As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents UsernameTxt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''passwordTxt control.
+    '''PasswordTxt control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents passwordTxt As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents PasswordTxt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''confirmPassTxt control.
@@ -57,4 +57,13 @@ Partial Public Class Register
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents confirmPassTxt As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnRegister control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnRegister As Global.System.Web.UI.WebControls.Button
 End Class

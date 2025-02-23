@@ -151,7 +151,7 @@
       <DependentUpon>Schedule Session.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="App_Data\Connection.vb" />
+    <Compile Include="Connection.vb" />
     <Compile Include="Doctor\Appointments.aspx.designer.vb">
       <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>

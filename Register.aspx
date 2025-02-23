@@ -18,6 +18,9 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         body {
             height: 100vh;
@@ -87,11 +90,11 @@
             <p>Welcome to eDOC</p>
             <form id="form1" runat="server">
                 <asp:TextBox ID="FullnameTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Full Name"></asp:TextBox>
-                <asp:TextBox ID="usernameTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Username"></asp:TextBox>
-                <asp:TextBox ID="passwordTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Password"></asp:TextBox>
+                <asp:TextBox ID="UsernameTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Username"></asp:TextBox>
+                <asp:TextBox ID="PasswordTxt" runat="server" class="form-control" RequiredFieldValidator1="true" type="password" placeholder="Password"></asp:TextBox>
                 <asp:TextBox ID="confirmPassTxt" runat="server" class="form-control" RequiredFieldValidator1="true" type="password" placeholder="Confirm Password"></asp:TextBox>
 
-                <button class="btn w-100 mt-2">REGISTER</button>
+                <asp:Button class="btn w-100 mt-2" ID="btnRegister" Text="REGISTER" runat="server" OnClick="btnRegister_Click" />
                 <p class="mt-3">Have an account? <a style="color: #001F3F;" href="/Login.aspx">Sign In</a></p>
             </form>
         </div>
