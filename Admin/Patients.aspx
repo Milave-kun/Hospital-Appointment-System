@@ -54,7 +54,6 @@
         <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Patients</a>
     </div>
     <div class="main-content">
-
         <div class="d-flex justify-content-between align-items-center mb-3">
 
             <!-- Search Box with Button -->
