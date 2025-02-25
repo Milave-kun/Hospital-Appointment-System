@@ -22,6 +22,7 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         .btn {
@@ -42,72 +43,102 @@
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h4>Administrator</h4>
-        <p>@admin123</p>
-        <b class="btn w-100">LOG OUT</b>
-        <hr>
-        <a class="sidebarr" href="Admin Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-        <a class="sidebarr" href="Add doctor.aspx"><i class="bi bi-people-fill"></i>Doctors</a>
-        <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a>
-        <a class="sidebarr" href="Manage Appointments.aspx"><i class="bi bi-file-medical-fill"></i>Appointment</a>
-        <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Patients</a>
-    </div>
-    <div class="main-content">
+    <form id="form1" runat="server">
+        <div class="sidebar">
+            <h4>Administrator</h4>
+            <p>@admin123</p>
+            <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
+            <hr>
+            <a class="sidebarr" href="Admin Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
+            <a class="sidebarr" href="Add doctor.aspx"><i class="bi bi-people-fill"></i>Doctors</a>
+            <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a>
+            <a class="sidebarr" href="Manage Appointments.aspx"><i class="bi bi-file-medical-fill"></i>Appointment</a>
+            <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Patients</a>
+        </div>
+        <div class="main-content">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
 
-            <!-- Search Box with Button -->
-            <div style="max-width: 350px; width: 100%;">
-                <form id="form1" runat="server">
+                <!-- Search Box with Button -->
+                <div style="max-width: 350px; width: 100%;">
                     <div class="input-group">
                         <asp:TextBox ID="searchTxt" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
                         <asp:Button ID="searchBtn" runat="server" CssClass="btn btn-dark" Text="Search" />
                     </div>
-                </form>
+                </div>
+
+                <!-- Date Section -->
+                <div class="d-flex align-items-center gap-2">
+                    <span class="text-secondary small">Today's Date</span>
+                    <strong class="fs-6" id="date">2025-02-06</strong>
+                    <i class="bi bi-calendar-fill"></i>
+                </div>
             </div>
 
-            <!-- Date Section -->
-            <div class="d-flex align-items-center gap-2">
-                <span class="text-secondary small">Today's Date</span>
-                <strong class="fs-6">2025-02-06</strong>
-                <i class="bi bi-calendar-fill"></i>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- Search Box with Button -->
+                <div style="max-width: 350px; width: 100%;">
+                    <h4 style="font-weight: bold;">Add New Doctor</h4>
+                    <p>All Doctors <span id="doctorsTotal" runat="server">(0)</span></p>
+                </div>
+
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
+                    Add Doctor
+                </button>
+
+                <!-- Bootstrap Modal -->
+                <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addDoctorModalLabel">Add Doctor</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column gap-3">
+                                <!-- Form inside modal -->
+                                <asp:TextBox ID="txtDoctorID" runat="server" class="form-control" placeholder="Enter Doctor's ID" TextMode="Number" />
+                                <asp:TextBox ID="txtDoctorName" runat="server" class="form-control" placeholder="Enter doctor's name" />
+                                <asp:TextBox ID="txtUsername" runat="server" class="form-control" placeholder="Enter Username" />
+                                <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Enter Password" type="password" />
+                                <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Enter Email" type="email" />
+                                <asp:TextBox ID="txtSpecialization" runat="server" class="form-control" placeholder="Enter specialization" />
+                                <asp:DropDownList ID="ddlAvailable" class="form-select" runat="server">
+                                    <asp:ListItem Selected>Select Availability</asp:ListItem>
+                                    <asp:ListItem Text="Active" Value="Active" />
+                                    <asp:ListItem Text="Inactive" Value="Inactive" />
+                                </asp:DropDownList>
+
+                                <!-- Image Upload -->
+                                <!-- <asp:FileUpload ID="fuDoctorImage" runat="server" CssClass="form-control" />
+                                    <asp:Image ID="imgPreview" runat="server" Width="100" Height="100" Visible="false" class="mt-2" /> -->
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnSaveDoctor" runat="server" CssClass="btn btn-success" Text="Save" OnClick="btnSaveDoctor_Click" />
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <asp:Table  class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function updateDate() {
+        let now = new Date();
+        let formattedDate = now.getFullYear() + '-' +
+            String(now.getMonth() + 1).padStart(2, '0') + '-' +
+            String(now.getDate()).padStart(2, '0');
+        document.getElementById("date").innerText = formattedDate;
+    }
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <!-- Search Box with Button -->
-            <div style="max-width: 350px; width: 100%;">
-                <h4 style="font-weight: bold;">Add New Doctor</h4>
-                <p>All Doctors <span id="totalDoctors">(0)</span></p>
-            </div>
-
-            <!-- Date Section -->
-            <div class="d-flex align-items-center gap-2">
-                <button class="btn">Add Doctor</button>
-            </div>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="bg-secondary text-white">
-                    <tr>
-                        <th>DOCTOR ID</th>
-                        <th>DOCTOR NAME</th>
-                        <th>EMAIL</th>
-                        <th>SPECIALTIES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" class="bg-light text-center py-5">
-                            <em>No records found</em>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
+    updateDate(); // Run when page loads
+    setInterval(updateDate, 1000); // Update every second
+</script>
 </body>
 </html>

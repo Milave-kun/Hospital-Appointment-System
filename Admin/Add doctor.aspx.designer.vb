@@ -23,6 +23,15 @@ Partial Public Class Add_doctor
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''logoutBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents logoutBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''searchTxt control.
     '''</summary>
     '''<remarks>
@@ -39,4 +48,112 @@ Partial Public Class Add_doctor
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents searchBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''doctorsTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents doctorsTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''txtDoctorID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDoctorID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtDoctorName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDoctorName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtUsername control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtUsername As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtPassword control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPassword As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtEmail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEmail As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtSpecialization control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtSpecialization As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''ddlAvailable control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlAvailable As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''fuDoctorImage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents fuDoctorImage As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
+    '''imgPreview control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents imgPreview As Global.System.Web.UI.WebControls.Image
+
+    '''<summary>
+    '''btnSaveDoctor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveDoctor As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class

@@ -23,6 +23,15 @@ Partial Public Class Patients
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''logoutBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents logoutBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''searchTxt control.
     '''</summary>
     '''<remarks>
@@ -39,4 +48,22 @@ Partial Public Class Patients
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents searchBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''patientsTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents patientsTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class
