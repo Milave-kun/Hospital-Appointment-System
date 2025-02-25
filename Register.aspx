@@ -95,7 +95,7 @@
                 <asp:TextBox ID="confirmPassTxt" runat="server" class="form-control" RequiredFieldValidator1="true" type="password" placeholder="Confirm Password"></asp:TextBox>
 
                 <asp:Button class="btn w-100 mt-2" ID="btnRegister" Text="REGISTER" runat="server" OnClick="btnRegister_Click" />
-                <p class="mt-3">Have an account? <a style="color: #001F3F;" href="/Login.aspx">Sign In</a></p>
+                <p class="mt-1">Have an account? <a style="color: #001F3F;" href="/Login.aspx">Sign In</a></p>
             </form>
         </div>
         <div class="login-image">
