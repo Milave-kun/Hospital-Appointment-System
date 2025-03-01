@@ -122,14 +122,14 @@ Public Class Add_doctor
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "DOCTOR ID"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "DOCTOR NAME"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "USERNAME"})
-        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PASSWORD"})
+        'headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PASSWORD"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "EMAIL"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "SPECIALTIES"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "AVAILABILITY"})
         Table1.Rows.Add(headerRow)
 
         ' Database connection and query execution
-        Dim query As String = "SELECT * FROM DoctorTbl"
+        Dim query As String = "SELECT Doctor_ID, Doctor_Name, Username, Email, Specialties, Availability FROM DoctorTbl"
         Using con As New SqlConnection(ConnectionString)
             con.Open()
             Using cmd As New SqlCommand(query, con)
@@ -143,7 +143,7 @@ Public Class Add_doctor
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Doctor_ID").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Doctor_Name").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Username").ToString()})
-                        tableRow.Cells.Add(New TableCell() With {.Text = row("Password").ToString()})
+                        'tableRow.Cells.Add(New TableCell() With {.Text = row("Password").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Email").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Specialties").ToString()})
 

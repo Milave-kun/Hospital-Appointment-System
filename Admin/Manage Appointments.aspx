@@ -69,7 +69,7 @@
                 <!-- Date Section -->
                 <div class="d-flex align-items-center gap-2">
                     <span class="text-secondary small">Today's Date</span>
-                    <strong class="fs-6">2025-02-06</strong>
+                    <strong class="fs-6" id="date">2025-02-06</strong>
                     <i class="bi bi-calendar-fill"></i>
                 </div>
             </div>
@@ -77,34 +77,55 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div style="max-width: 350px; width: 100%;">
                     <h4 style="font-weight: bold;">Manage Appointments</h4>
-                    <p>Appointments <span id="totalAppointments">(0)</span></p>
+                    <p>Appointments <span id="totalAppointments" runat="server">(0)</span></p>
                 </div>
 
-                <div class="d-flex align-items-center gap-2">
-                    <button class="btn">Add Appointment</button>
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
+                    Add Appointment
+                </button>
+
+                <!-- Bootstrap Modal -->
+                <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addDoctorModalLabel">Add an Appointment</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column gap-3">
+                                <!-- Form inside modal -->
+                                <asp:TextBox ID="txtAppointmentID" runat="server" class="form-control" ReadOnly="true" />
+                                <asp:DropDownList ID="ddlDoctors" class="form-select" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlPatients" class="form-select" runat="server"></asp:DropDownList>
+                                <asp:TextBox ID="txtAppointment" runat="server" class="form-control" placeholder="Enter Appointment" />
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnSaveAppointment" runat="server" CssClass="btn btn-success" Text="Save" OnClick="btnSaveAppointment_Click" />
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class="bg-secondary text-white">
-                        <tr>
-                            <th>DOCTOR ID</th>
-                            <th>DOCTOR NAME</th>
-                            <th>PATIENT NAME</th>
-                            <th>APPOINTMENT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="4" class="bg-light text-center py-5">
-                                <em>No records found</em>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <asp:Table  class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
     </form>
+
+    <script>
+        function updateDate() {
+            let now = new Date();
+            let formattedDate = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                String(now.getDate()).padStart(2, '0');
+            document.getElementById("date").innerText = formattedDate;
+        }
+
+        updateDate(); // Run when page loads
+        setInterval(updateDate, 1000); // Update every second
+    </script>
 </body>
 </html>

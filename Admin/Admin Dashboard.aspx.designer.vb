@@ -50,6 +50,15 @@ Partial Public Class Admin_Dashboard
     Protected WithEvents patientsTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''appointnmentsTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents appointnmentsTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''AppointmentsTbl control.
     '''</summary>
     '''<remarks>

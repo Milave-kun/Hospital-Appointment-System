@@ -77,7 +77,7 @@
                 <p>Patients</p>
             </div>
             <div class="card">
-                <h5 runat="server">4</h5>
+                <h5 id="appointnmentsTotal"  runat="server">4</h5>
                 <p>New Booking</p>
             </div>
             <div class="card">
@@ -89,7 +89,9 @@
         <div class="table-container">
             <div class="table-box">
                 <h5>Appointments</h5>
-                <asp:Table ID="AppointmentsTbl" runat="server"></asp:Table>
+                <div class="table-responsive">
+                    <asp:Table class="mt-4 table table-bordered" ID="AppointmentsTbl" runat="server"></asp:Table>
+                </div>
             </div>
             <div class="table-box">
                 <h5>Sessions</h5>

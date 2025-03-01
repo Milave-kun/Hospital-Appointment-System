@@ -48,4 +48,67 @@ Partial Public Class Manage_Appointments
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents searchBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''totalAppointments control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents totalAppointments As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''txtAppointmentID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAppointmentID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''ddlDoctors control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlDoctors As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddlPatients control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPatients As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtAppointment control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAppointment As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnSaveAppointment control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAppointment As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class
