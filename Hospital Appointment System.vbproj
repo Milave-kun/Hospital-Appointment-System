@@ -110,6 +110,7 @@
     <Content Include="Global.asax" />
     <Content Include="Homepage.html" />
     <Content Include="hospital-appointment-system %281%29.png" />
+    <Content Include="Loading.html" />
     <Content Include="Login.aspx" />
     <Content Include="Patient\All Doctors.aspx" />
     <Content Include="Patient\Appointments Patient.aspx" />
@@ -300,6 +301,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
