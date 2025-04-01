@@ -38,14 +38,15 @@
 <body>
     <form id="form1" runat="server">
         <div class="sidebar">
-            <h4>Test Doctor</h4>
-            <p>@doctor123</p>
+            <h4 id="selectedUsername" runat="server"></h4>
+            <p>
+                <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+            </p>
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
             <hr>
             <a class="sidebarr" href="Doctor Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-            <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
-            <a class="sidebarr" href="Sessions.aspx"><i class="bi bi-clock-fill"></i>My Sessions</a>
             <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>My Patients</a>
+            <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
         </div>
 
         <div class="main-content">
@@ -72,25 +73,8 @@
                 </div>
             </div>
 
-            <div class="table-responsive mt-5">
-                <table class="table table-bordered text-dark">
-                    <thead class="bg-secondary text-white">
-                        <tr>
-                            <th>PATIENT ID</th>
-                            <th>PATIENT NAME</th>
-                            <th>CONTACT NUMBER</th>
-                            <th>DATE</th>
-                            <th>TIME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="5" class="bg-light text-center py-5">
-                                <em>No records found</em>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="table-responsive">
+                <asp:Table class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
     </form>

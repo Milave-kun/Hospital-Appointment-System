@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class Doctor_Dashboard
 
     '''<summary>
+    '''selectedUsername control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedUsername As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''selectedRole control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedRole As Global.System.Web.UI.WebControls.Literal
+
+    '''<summary>
     '''form1 control.
     '''</summary>
     '''<remarks>
@@ -30,4 +48,40 @@ Partial Public Class Doctor_Dashboard
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents logoutBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''usernamee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents usernamee As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''patientsTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents patientsTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''bookingTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents bookingTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class

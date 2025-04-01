@@ -52,16 +52,17 @@
 </head>
 <body>
     <div class="sidebar">
-        <h4>Test Doctor</h4>
-        <p>@doctor123</p>
+        <h4 id="selectedUsername" runat="server"></h4>
+        <p>
+            <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+        </p>
         <form id="form1" runat="server">
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
         </form>
         <hr>
         <a class="sidebarr" href="Doctor Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-        <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
-        <a class="sidebarr" href="Sessions.aspx"><i class="bi bi-clock-fill"></i>My Sessions</a>
         <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>My Patients</a>
+        <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
     </div>
 
     <div class="main-content">
@@ -78,7 +79,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="welcome-box w-100">
                     <h5 class="fw-bold">WELCOME!</h5>
-                    <h3 class="fw-bold">Test Doctor</h3>
+                    <h3 id="usernamee" class="fw-bold" runat="server"></h3>
                     <p>
                         Thanks for joining with us. We are always trying to get you a complete service.<br>
                         You can view your daily schedule. Reach Patients <strong>Appointment</strong> at home
@@ -92,46 +93,23 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="status-card">
-                                <h2 class="fw-bold">1</h2>
-                                <p>All Doctors</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="status-card">
-                                <h2 class="fw-bold">4</h2>
+                                <h2 id="patientsTotal" runat="server" class="fw-bold">4</h2>
                                 <p>Patients</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="status-card">
-                                <h2 class="fw-bold">4</h2>
+                                <h2 id="bookingTotal" runat="server" class="fw-bold">4</h2>
                                 <p>New Booking</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="status-card">
-                                <h2 class="fw-bold">2</h2>
-                                <p>Today Session</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <h5 class="fw-bold">Your Upcoming Appointment</h5>
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Session Title</th>
-                                <th>Doctor</th>
-                                <th>Date & Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="3" class="text-center">No upcoming appointments</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <asp:Table class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
+                    </div>
                 </div>
             </div>
         </div>

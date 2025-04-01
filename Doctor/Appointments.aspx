@@ -38,14 +38,15 @@
 <body>
     <form id="form1" runat="server">
         <div class="sidebar">
-            <h4>Test Doctor</h4>
-            <p>@doctor123</p>
+            <h4 id="selectedUsername" runat="server"></h4>
+            <p>
+                <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+            </p>
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
             <hr>
             <a class="sidebarr" href="Doctor Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-            <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
-            <a class="sidebarr" href="Sessions.aspx"><i class="bi bi-clock-fill"></i>My Sessions</a>
             <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>My Patients</a>
+            <a class="sidebarr" href="Appointments.aspx"><i class="bi bi-file-medical-fill"></i>My Appointments</a>
         </div>
 
         <div class="main-content">
@@ -60,37 +61,49 @@
 
             <h4 style="font-weight: bold;" class="mb-5">MY APPOINTMENTS</h4>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-2">
-                    <button class="btn">Add Appointment</button>
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Button to trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
+                        Schedule Appointment
+                    </button>
+
+                    <!-- Bootstrap Modal -->
+                    <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addDoctorModalLabel">Schedule an Appointment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex flex-column gap-3">
+                                    <!-- Form inside modal -->
+                                    <asp:TextBox ID="txtAppointmentID" runat="server" class="form-control" TextMode="Number" ReadOnly="true" />
+                                    <asp:TextBox ID="txtAppointmentTitle" runat="server" class="form-control" placeholder="Enter Appointment Title" />
+                                    <asp:DropDownList ID="ddlPatients" class="form-select" runat="server"></asp:DropDownList>
+
+                                    <asp:TextBox ID="txtDate" runat="server" class="form-control" TextMode="Date" max="2028-12-31" />
+                                    <asp:TextBox ID="txtTime" runat="server" class="form-control" TextMode="Time" />
+                                    <!-- Unique ID for Time -->
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="saveBtn" runat="server" CssClass="btn btn-success" Text="Save" OnClick="saveBtn_Click" />
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="max-width: 350px; width: 100%;">
                     <div class="input-group">
                         <asp:TextBox ID="searchTxt" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-                        <asp:Button ID="searchBtn" runat="server" CssClass="btn btn-dark" Text="Search" />
+                        <asp:Button ID="searchBtn" runat="server" CssClass="btn btn-dark" Text="Search" OnClick="searchBtn_Click" />
                     </div>
                 </div>
             </div>
 
-            <div class="table-responsive mt-5">
-                <table class="table table-bordered text-dark">
-                    <thead class="bg-secondary text-white">
-                        <tr>
-                            <th>APPOINTMENT NUMBER</th>
-                            <th>APPOINTMENT NAME</th>
-                            <th>PATIENT NAME</th>
-                            <th>DATE</th>
-                            <th>TIME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="5" class="bg-light text-center py-5">
-                                <em>No records found</em>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="table-responsive">
+                <asp:Table class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
     </form>
