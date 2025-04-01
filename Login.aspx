@@ -19,7 +19,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             height: 100vh;
@@ -27,6 +31,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f8f9fa;
+            font-family: "Poppins", sans-serif;
         }
 
         .login-container {
@@ -80,33 +85,78 @@
             .login-image img {
                 max-width: 80%;
             }
+
+            .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+.form-control {
+    padding-right: 35px; /* Ensure space for the icon */
+    height: 40px; /* Adjust height if needed */
+}
+
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-form">
-            <h2>USER LOGIN</h2>
-            <p>Welcome to eDOC</p>
-            <form id="form1" runat="server">
-                <asp:TextBox ID="usernameTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Username"></asp:TextBox>
+    <div class="login-form">
+        <h2>USER LOGIN</h2>
+        <p>Welcome to eDOC</p>
+        <form id="form1" runat="server">
+            <asp:TextBox ID="usernameTxt" runat="server" class="form-control" RequiredFieldValidator1="true" placeholder="Username"></asp:TextBox>
+
+            <!-- Password field with eye icon -->
+            <div class="password-wrapper">
                 <asp:TextBox ID="passwordTxt" runat="server" class="form-control" RequiredFieldValidator1="true" type="password" placeholder="Password"></asp:TextBox>
+                <span class="toggle-password" onclick="togglePassword()">
+                    <i class="fa fa-eye" id="eyeIcon"></i>
+                </span>
+            </div>
 
-                <div class="d-flex justify-content-between">
-                    <a href="#">Forgot Password?</a>
-                </div>
+            <div class="d-flex justify-content-between">
+                <a href="#">Forgot Password?</a>
+            </div>
 
-                <asp:Button class="btn w-100 mt-3" ID="btnLogin" Text="LOGIN" runat="server" OnClick="btnLogin_Click" />
-                <p class="mt-3">Don't have an account? <a style="color: #001F3F;" href="/Register.aspx">Sign Up</a></p>
-            </form>
-        </div>
-        <div class="login-image">
-            <img src="/hospital-appointment-system (1).png" alt="Calendar Icon">
-            <h4 style="text-align: center; color: #001F3F; font-weight: bold;">Hospital Appointment
-                <br />
-                System</h4>
-        </div>
+            <asp:Button class="btn w-100 mt-3" ID="btnLogin" Text="LOGIN" runat="server" OnClick="btnLogin_Click" />
+            <p class="mt-3">Don't have an account? <a style="color: #001F3F;" href="/Register.aspx">Sign Up</a></p>
+        </form>
     </div>
+    <div class="login-image">
+        <img src="/hospital-appointment-system (1).png" alt="Calendar Icon">
+        <h4 style="text-align: center; color: #001F3F; font-weight: bold;">Hospital Appointment
+            <br />
+            System</h4>
+    </div>
+</div>
 </body>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById('<%= passwordTxt.ClientID %>');
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>
 <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

@@ -46,6 +46,9 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -112,6 +115,7 @@
     <Content Include="Patient\Appointments Patient.aspx" />
     <Content Include="Patient\Patient Dashboard.aspx" />
     <Content Include="Patient\Sessions Patient.aspx" />
+    <Content Include="Patient\UpdateAppointment.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -235,6 +239,13 @@
     </Compile>
     <Compile Include="Patient\Sessions Patient.aspx.vb">
       <DependentUpon>Sessions Patient.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Patient\UpdateAppointment.aspx.designer.vb">
+      <DependentUpon>UpdateAppointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\UpdateAppointment.aspx.vb">
+      <DependentUpon>UpdateAppointment.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Register.aspx.designer.vb">
