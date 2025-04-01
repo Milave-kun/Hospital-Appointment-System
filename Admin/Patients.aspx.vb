@@ -6,6 +6,17 @@ Public Class Patients
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         patientsTbl()
         PatientsCount()
+
+        If Not IsPostBack Then
+            ' Check if user is logged in
+            If Session("username") IsNot Nothing AndAlso Session("role") IsNot Nothing Then
+                selectedUsername.InnerText = Session("username").ToString()
+                selectedRole.Text = Session("role").ToString() ' Assign role to Literal control
+            Else
+                ' Redirect to login if session is empty
+                Response.Redirect("~/Login.aspx")
+            End If
+        End If
     End Sub
 
     Protected Sub logoutBtn_Click(sender As Object, e As EventArgs)
@@ -35,7 +46,8 @@ Public Class Patients
 
         ' Add table headers
         Dim headerRow As New TableHeaderRow()
-        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PATIENT ID"})
+        headerRow.CssClass = "table-dark"
+        'headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PATIENT ID"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PATIENT NAME"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "USERNAME"})
         Table1.Rows.Add(headerRow)
@@ -52,7 +64,7 @@ Public Class Patients
                     ' Populate table with data
                     For Each row As DataRow In dt.Rows
                         Dim tableRow As New TableRow()
-                        tableRow.Cells.Add(New TableCell() With {.Text = row("ID").ToString()})
+                        'tableRow.Cells.Add(New TableCell() With {.Text = row("ID").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("FullName").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Username").ToString()})
                         Table1.Rows.Add(tableRow)

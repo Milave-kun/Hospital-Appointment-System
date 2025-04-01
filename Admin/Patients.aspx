@@ -45,13 +45,15 @@
 <body>
     <form id="form1" runat="server">
         <div class="sidebar">
-            <h4>Administrator</h4>
-            <p>@admin123</p>
+            <h4 id="selectedUsername" runat="server"></h4>
+            <p>
+                <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+            </p>
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
             <hr>
             <a class="sidebarr" href="Admin Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
             <a class="sidebarr" href="Add doctor.aspx"><i class="bi bi-people-fill"></i>Doctors</a>
-            <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a>
+            <!-- <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a> -->
             <a class="sidebarr" href="Manage Appointments.aspx"><i class="bi bi-file-medical-fill"></i>Appointment</a>
             <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Patients</a>
         </div>
@@ -82,13 +84,10 @@
                 </div>
 
                 <!-- Date Section -->
-                <div class="d-flex align-items-center gap-2">
-                    <button class="btn">Add Patients</button>
-                </div>
             </div>
 
             <div class="table-responsive">
-                <asp:Table  class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
+                <asp:Table  class="mt-1 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
     </form>

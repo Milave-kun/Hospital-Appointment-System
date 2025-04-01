@@ -44,17 +44,19 @@
 </head>
 <body>
     <div class="sidebar">
-        <h4>Administrator</h4>
-        <p>@admin123</p>
+        <h4 id="selectedUsername" runat="server"></h4>
+        <p>
+            <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+        </p>
         <form id="form1" runat="server">
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
         </form>
         <hr>
         <a class="sidebarr" href="Admin Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
         <a class="sidebarr" href="Add doctor.aspx"><i class="bi bi-people-fill"></i>Doctors</a>
-        <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a>
+        <!-- <a class="sidebarr" href="Schedule Session.aspx"><i class="bi bi-calendar-fill"></i>Schedule</a> -->
         <a class="sidebarr" href="Manage Appointments.aspx"><i class="bi bi-file-medical-fill"></i>Appointment</a>
-        <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Patients</a>
+        <a class="sidebarr" href="Patients.aspx"><i class="bi bi-person-wheelchair"></i>Accounts</a>
     </div>
 
     <div class="main-content">
@@ -66,23 +68,23 @@
                 <i class="bi bi-calendar-fill"></i>
             </div>
         </div>
-        <h4 style="font-weight: bold;">Status</h4>
+       <h4 style="font-weight: bold;">Status</h4>
         <div class="card-container">
             <div class="card">
-                <h5 id="doctorsTotal" runat="server">1</h5>
+                <h5 id="doctorsTotal" runat="server" class="fw-bold">1</h5>
                 <p>Doctors</p>
             </div>
             <div class="card">
-                <h5 id="patientsTotal" runat="server">4</h5>
+                <h5 id="patientsTotal" runat="server" class="fw-bold">4</h5>
                 <p>Patients</p>
             </div>
             <div class="card">
-                <h5 id="appointnmentsTotal"  runat="server">4</h5>
-                <p>New Booking</p>
+                <h5 id="appointnmentsTotal"  runat="server" class="fw-bold">4</h5>
+                <p>New Appointments</p>
             </div>
             <div class="card">
-                <h5 runat="server">2</h5>
-                <p>Today Session</p>
+                <h5 id="newAppointments" runat="server" class="fw-bold">2</h5>
+                <p>Appointments (Patients)</p>
             </div>
         </div>
 
@@ -90,13 +92,13 @@
             <div class="table-box">
                 <h5>Appointments</h5>
                 <div class="table-responsive">
-                    <asp:Table class="mt-4 table table-bordered" ID="AppointmentsTbl" runat="server"></asp:Table>
+                    <asp:Table class="mt-3 table table-bordered" ID="AppointmentsTbl" runat="server"></asp:Table>
                 </div>
             </div>
             <div class="table-box">
-                <h5>Sessions</h5>
-                <asp:Table ID="SessionsTbl" runat="server"></asp:Table>
-            </div>
+                <h5>Appointments (Patients)</h5>
+                <asp:Table class="mt-4 table table-bordered" ID="PatientsTbl" runat="server"></asp:Table>
+            </div> 
         </div>
     </div>
     <script>

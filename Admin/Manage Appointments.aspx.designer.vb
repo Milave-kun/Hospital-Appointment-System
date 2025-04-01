@@ -23,6 +23,24 @@ Partial Public Class Manage_Appointments
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''selectedUsername control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedUsername As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''selectedRole control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedRole As Global.System.Web.UI.WebControls.Literal
+
+    '''<summary>
     '''logoutBtn control.
     '''</summary>
     '''<remarks>
@@ -93,6 +111,15 @@ Partial Public Class Manage_Appointments
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtAppointment As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSaveAppointment control.

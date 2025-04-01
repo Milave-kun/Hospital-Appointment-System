@@ -71,7 +71,7 @@
                 <!-- Date Section -->
                 <div class="d-flex align-items-center gap-2">
                     <span class="text-secondary small">Today's Date</span>
-                    <strong class="fs-6">2025-02-06</strong>
+                    <strong class="fs-6" id="date">2025-02-06</strong>
                     <i class="bi bi-calendar-fill"></i>
                 </div>
             </div>
@@ -95,13 +95,14 @@
                         <tr>
                             <th>SESSION TITLE</th>
                             <th>DOCTOR NAME</th>
-                            <th>SCHEDULE DATE & TIME</th>
+                            <th>DATE</th>
+                            <th>TIME</th>
                             <th>MAXIMUM BOOKING</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" class="bg-light text-center py-5">
+                            <td colspan="5" class="bg-light text-center py-5">
                                 <em>No records found</em>
                             </td>
                         </tr>
@@ -110,5 +111,17 @@
             </div>
         </div>
     </form>
+    <script>
+        function updateDate() {
+            let now = new Date();
+            let formattedDate = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                String(now.getDate()).padStart(2, '0');
+            document.getElementById("date").innerText = formattedDate;
+        }
+
+        updateDate(); // Run when page loads
+        setInterval(updateDate, 1000); // Update every second
+</script>
 </body>
 </html>

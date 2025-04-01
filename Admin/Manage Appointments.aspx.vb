@@ -5,9 +5,18 @@ Public Class Manage_Appointments
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            Patients()
             appointmentID()
             Doctors()
+            Patients()
+
+            ' Check if user is logged in
+            If Session("username") IsNot Nothing AndAlso Session("role") IsNot Nothing Then
+                selectedUsername.InnerText = Session("username").ToString()
+                selectedRole.Text = Session("role").ToString() ' Assign role to Literal control
+            Else
+                ' Redirect to login if session is empty
+                Response.Redirect("~/Login.aspx")
+            End If
         End If
         AppointmentsTbl()
         AppointmentsCount()
@@ -37,7 +46,6 @@ Public Class Manage_Appointments
 
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "logoutMessage", script, True)
     End Sub
-
     Public Sub Patients()
         Using conn As New SqlConnection(ConnectionString)
             Try
@@ -82,7 +90,6 @@ Public Class Manage_Appointments
         End Using
     End Sub
 
-
     Protected Sub btnSaveAppointment_Click(sender As Object, e As EventArgs)
         Appointments()
     End Sub
@@ -97,6 +104,7 @@ Public Class Manage_Appointments
         Dim DoctorName As String = ddlDoctors.SelectedItem.Text
         Dim PatientName As String = ddlPatients.SelectedItem.Text
         Dim Appointment As String = txtAppointment.Text.Trim()
+        Dim Datee As String = txtDate.Text.Trim()
 
 
         ' Check for empty fields
@@ -106,14 +114,15 @@ Public Class Manage_Appointments
         End If
 
         Using con As New SqlConnection(ConnectionString)
-            Dim sql As String = "INSERT INTO AppointmentsTbl (Appointment_ID, Doctor_Name, Patient_Name, Appointment) 
-                             VALUES (@Appointment_ID, @Doctor_Name, @Patient_Name, @Appointment)"
+            Dim sql As String = "INSERT INTO AppointmentsTbl (Appointment_Number, Doctor_Name, Patient_Name, Appointment, Date) 
+                             VALUES (@Appointment_Number, @Doctor_Name, @Patient_Name, @Appointment, @Date)"
             Using cmd As New SqlCommand(sql, con)
                 ' Correct parameter values
-                cmd.Parameters.Add("@Appointment_ID", SqlDbType.Int).Value = AppointmentID
+                cmd.Parameters.Add("@Appointment_Number", SqlDbType.Int).Value = AppointmentID
                 cmd.Parameters.Add("@Doctor_Name", SqlDbType.VarChar, 100).Value = DoctorName
                 cmd.Parameters.Add("@Patient_Name", SqlDbType.VarChar, 100).Value = PatientName
                 cmd.Parameters.Add("@Appointment", SqlDbType.VarChar, 100).Value = Appointment
+                cmd.Parameters.Add("@Date", SqlDbType.VarChar, 100).Value = Datee
 
                 ' Open connection before executing
                 con.Open()
@@ -144,10 +153,12 @@ Public Class Manage_Appointments
 
         ' Add table headers
         Dim headerRow As New TableHeaderRow()
-        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "APPOINTMENT ID"})
+        headerRow.CssClass = "table-dark"
+        'headerRow.Cells.Add(New TableHeaderCell() With {.Text = "APPOINTMENT ID"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "DOCTOR NAME"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "PATIENT NAME"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "APPOINTMENT"})
+        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Date"})
         Table1.Rows.Add(headerRow)
 
         ' Database connection and query execution
@@ -162,10 +173,11 @@ Public Class Manage_Appointments
                     ' Populate table with data
                     For Each row As DataRow In dt.Rows
                         Dim tableRow As New TableRow()
-                        tableRow.Cells.Add(New TableCell() With {.Text = row("Appointment_ID").ToString()})
+                        'tableRow.Cells.Add(New TableCell() With {.Text = row("Appointment_Number").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Doctor_Name").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Patient_Name").ToString()})
                         tableRow.Cells.Add(New TableCell() With {.Text = row("Appointment").ToString()})
+                        tableRow.Cells.Add(New TableCell() With {.Text = row("Date").ToString()})
                         Table1.Rows.Add(tableRow)
                     Next
                 End Using
