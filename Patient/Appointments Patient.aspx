@@ -22,7 +22,6 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
         .btn {
             background-color: #001F3F;
@@ -53,16 +52,16 @@
 <body>
     <form id="form1" runat="server">
         <div class="sidebar">
-            <h4>Test Patient</h4>
-            <p>@patient123</p>
-            
-            <!-- Logout Button inside the main form -->
+            <h4 id="selectedUsername" class="fw-bold" runat="server"></h4>
+            <p>
+                <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
+            </p>
+
             <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
-            
             <hr>
             <a class="sidebarr" href="Patient Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
             <a class="sidebarr" href="All Doctors.aspx"><i class="bi bi-briefcase-fill"></i>All Doctors</a>
-            <a class="sidebarr" href="Sessions Patient.aspx"><i class="bi bi-clock-fill"></i>Scheduled Sessions</a>
+            <!-- <a class="sidebarr" href="Sessions Patient.aspx"><i class="bi bi-clock-fill"></i>Scheduled Sessions</a> -->
             <a class="sidebarr" href="Appointments Patient.aspx"><i class="bi bi-bookmark-fill"></i>My Appointments</a>
         </div>
 
@@ -71,15 +70,58 @@
                 <!-- Date Section -->
                 <div class="d-flex align-items-center gap-2">
                     <span class="text-secondary small">Today's Date</span>
-                    <strong class="fs-6">2025-02-06</strong>
+                    <strong class="fs-6" id="date">2025-02-06</strong>
                     <i class="bi bi-calendar-fill"></i>
                 </div>
             </div>
 
             <h4 style="font-weight: bold;" class="mb-5">SCHEDULED APPOINTMENTS</h4>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-2">
-                    <button class="btn">Add Appointments</button>
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
+                    Add Appointment
+               
+                </button>
+
+                <!-- Bootstrap Modal -->
+                <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addDoctorModalLabel">Add an Appointment</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column gap-3">
+                                <!-- Form inside modal -->
+                                <asp:TextBox ID="txtAppointmentID" runat="server" class="form-control" TextMode="Number" ReadOnly="true" />
+                                <asp:TextBox ID="txtAppointmentTitle" runat="server" class="form-control" placeholder="Enter Appointment Title" />
+
+                                <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+                                <asp:UpdatePanel ID="updPanel" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <!-- Profession Dropdown -->
+                                        <asp:DropDownList ID="ddlProfession" class="form-select" runat="server" AutoPostBack="True"
+                                            OnSelectedIndexChanged="ddlProfession_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                        <br />
+                                        <!-- Doctors Dropdown -->
+                                        <asp:DropDownList ID="ddlDoctors" class="form-select" runat="server"></asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ddlProfession" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+
+                                <asp:TextBox ID="txtDate" runat="server" class="form-control" TextMode="Date" max="2028-12-31" />
+                                <asp:TextBox ID="txtTime" runat="server" class="form-control" TextMode="Time" />
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnSession" runat="server" CssClass="btn btn-success" Text="Save" OnClick="btnSession_Click" />
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="max-width: 350px; width: 100%;">
@@ -90,28 +132,83 @@
                 </div>
             </div>
 
-            <div class="table-responsive mt-5">
-                <table class="table table-bordered text-dark">
-                    <thead class="bg-secondary text-white">
-                        <tr>
-                            <th>APPOINTMENT NUMBER</th>
-                            <th>APPOINTMENT NAME</th>
-                            <th>DOCTOR NAME</th>
-                            <th>DATE</th>
-                            <th>TIME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="5" class="bg-light text-center py-5">
-                                <em>No records found</em>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="table-responsive">
+                <asp:Table class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
             </div>
         </div>
     </form>
+    <script>
+        function updateDate() {
+            let now = new Date();
+            let formattedDate = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                String(now.getDate()).padStart(2, '0');
+            document.getElementById("date").innerText = formattedDate;
+        }
+
+        updateDate(); // Run when page loads
+        setInterval(updateDate, 1000); // Update every second
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const table = document.getElementById('<%= Table1.ClientID %>');
+
+            if (!table) {
+                console.error("❌ Table not found! Check ClientID.");
+                return;
+            }
+
+            table.addEventListener("click", function (e) {
+                console.log("✅ Row clicked!"); // Debugging
+                let row = e.target.closest("tr");
+
+                if (!row || row.parentNode.tagName === "THEAD") {
+                    console.warn("⚠️ Clicked a header or invalid row.");
+                    return;
+                }
+
+                // Remove highlight from all rows and highlight the selected row
+                table.querySelectorAll("tr").forEach(r => r.classList.remove("table-primary"));
+                row.classList.add("table-primary");
+
+                extractRowDataAndRedirect(row);
+            });
+        });
+
+        function extractRowDataAndRedirect(row) {
+            if (!row) {
+                console.error("❌ Row is undefined!");
+                return;
+            }
+
+            let cells = row.getElementsByTagName("td");
+
+            if (cells.length === 0) {
+                console.error("❌ No <td> elements found in row!");
+                return;
+            }
+
+            // Extracting data safely
+            let appointmentID = encodeURIComponent(cells[0]?.innerText.trim() || "");
+            let appointmentTitle = encodeURIComponent(cells[1]?.innerText.trim() || "");
+            let profession = encodeURIComponent(cells[2]?.innerText.trim() || "");
+            let doctor = encodeURIComponent(cells[3]?.innerText.trim() || "");
+            let date = encodeURIComponent(cells[4]?.innerText.trim() || "");
+            let time = encodeURIComponent(cells[5]?.innerText.trim() || "");
+
+            // Ensure appointmentID exists before redirecting
+            if (!appointmentID) {
+                console.error("❌ Appointment ID is missing! Cannot redirect.");
+                return;
+            }
+
+            let redirectUrl = `UpdateAppointment.aspx?AppointmentID=${appointmentID}&Title=${appointmentTitle}&Profession=${profession}&Doctor=${doctor}&Date=${date}&Time=${time}`;
+
+            console.log("🔄 Redirecting to:", redirectUrl); // Debugging line
+            window.location.href = redirectUrl;
+        }
+
+
+    </script>
 </body>
 
 </html>

@@ -23,6 +23,24 @@ Partial Public Class Sessions_Patient
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''selectedUsername control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedUsername As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''selectedRole control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents selectedRole As Global.System.Web.UI.WebControls.Literal
+
+    '''<summary>
     '''logoutBtn control.
     '''</summary>
     '''<remarks>
@@ -30,6 +48,60 @@ Partial Public Class Sessions_Patient
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents logoutBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''txtSessionID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtSessionID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtSessionTitle control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtSessionTitle As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''ddlDoctors control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlDoctors As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''txtTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTime As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnSession control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSession As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''searchTxt control.
@@ -48,4 +120,13 @@ Partial Public Class Sessions_Patient
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents searchBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Table1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class

@@ -1,10 +1,10 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="All Doctors.aspx.vb" Inherits="Hospital_Appointment_System.All_Doctors" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="UpdateAppointment.aspx.vb" Inherits="Hospital_Appointment_System.UpdateAppointment" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Patients Dashboard - All Doctors</title>
+    <title>Patients Dashboard - Scheduled Sessions</title>
     <link href="/CSS/Dashboard.css" rel="stylesheet" />
 
     <link
@@ -33,31 +33,17 @@
                 background-color: #001F3F;
                 color: white;
             }
-
-        .welcome-box {
-            background-color: #6c96b3;
-            color: white;
-            padding: 50px;
-            border-radius: 8px;
-        }
-
-        .status-card {
-            border: 1px solid #000;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            background: white;
-        }
     </style>
 </head>
 <body>
-    <form id="form2" runat="server">
+    <form id="form1" runat="server">
         <div class="sidebar">
             <h4 id="selectedUsername" class="fw-bold" runat="server"></h4>
             <p>
                 <asp:Literal ID="selectedRole" runat="server"></asp:Literal>
             </p>
-                <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
+
+            <asp:Button class="btn w-100" ID="logoutBtn" Text="LOG OUT" runat="server" OnClick="logoutBtn_Click" />
             <hr>
             <a class="sidebarr" href="Patient Dashboard.aspx"><i class="bi bi-house-door-fill"></i>Dashboard</a>
             <a class="sidebarr" href="All Doctors.aspx"><i class="bi bi-briefcase-fill"></i>All Doctors</a>
@@ -75,22 +61,16 @@
                 </div>
             </div>
 
-            <h4 style="font-weight: bold;" class="mb-5">ALL DOCTORS</h4>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-2">
-                    <!-- <button class="btn">Add Appointment</button>-->
-                </div>
-
-                <div style="max-width: 350px; width: 100%;">
-                    <div class="input-group">
-                        <asp:TextBox ID="searchTxt" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-                        <asp:Button ID="searchBtn" runat="server" CssClass="btn btn-dark" Text="Search" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <asp:Table  class="mt-4 table table-bordered" ID="Table1" runat="server"></asp:Table>
+            <h4 style="font-weight: bold;" class="mb-5">UPDATE SELECTED APPOINTMENT</h4>
+            <div class="modal-body d-flex flex-column gap-3">
+                <asp:TextBox ID="txtAppointmentID" runat="server" class="form-control" TextMode="Number" ReadOnly="true" />
+                <asp:TextBox ID="txtAppointmentTitle" runat="server" class="form-control" />
+                <asp:TextBox ID="txtProfession" runat="server" class="form-control" />
+                <asp:TextBox ID="txtDoctors" runat="server" class="form-control" />
+                <asp:TextBox ID="txtDate" runat="server" class="form-control" TextMode="Date" max="2028-12-31" />
+                <asp:TextBox ID="txtTime" runat="server" class="form-control" TextMode="Time" />
+                <asp:Button ID="btnUpdate" runat="server" CssClass="btn" Text="Update Appointment" />
+                <asp:Button ID="btnBack" runat="server" CssClass="btn" Text="Back" OnClick="btnBack_Click" />
             </div>
         </div>
     </form>
@@ -102,9 +82,6 @@
                 String(now.getDate()).padStart(2, '0');
             document.getElementById("date").innerText = formattedDate;
         }
-
-        updateDate(); // Run when page loads
-        setInterval(updateDate, 1000); // Update every second
     </script>
 </body>
 </html>
